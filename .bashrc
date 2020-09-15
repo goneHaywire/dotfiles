@@ -120,3 +120,5 @@ export PATH=$PATH":$HOME/bin"
 
 # always open tmux
 tmux-init
+alias notes="code ~/notes"
+
