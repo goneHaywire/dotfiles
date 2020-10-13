@@ -122,3 +122,5 @@ export PATH=$PATH":$HOME/bin"
 tmux-init
 alias notes="code ~/notes"
 
+# Speed Up Videos
+alias speedup='ls -1 | grep mp4 | xargs -d "\n" -i ffmpeg -i "{}" -filter_complex "[0:v]setpts=0.769230769*PTS[v];[0:a]atempo=1.3[a]" -map "[v]" -map "[a]" "sped-up/{}"'
