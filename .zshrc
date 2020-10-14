@@ -8,7 +8,7 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="clean"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -93,17 +93,12 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
+# get aliases
+source ~/.aliases
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias dotfiles="git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME/.dotfiles"
 export PATH=$PATH":$HOME/bin"
 
 # always open tmux
 tmux-init
-alias notes="code ~/notes"
-
-# Speed Up Videos
-alias speedup='mkdir output; ls -1 | grep mp4 | xargs -d "\n" -i ffmpeg -i "{}" -filter_complex "[0:v]setpts=0.769230769*PTS[v];[0:a]atempo=1.3[a]" -map "[v]" -map "[a]" "output/{}"'
-
