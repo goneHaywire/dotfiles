@@ -84,3 +84,6 @@ inoremap <Left>  <ESC>:echoe "Use j"<CR>
 inoremap <Right> <ESC>:echoe "Use k"<CR>
 inoremap <Up>    <ESC>:echoe "Use l"<CR>
 inoremap <Down>  <ESC>:echoe "Use ;"<CR>
+
+" Use system clipboard
+set clipboard=unnamedplus
