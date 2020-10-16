@@ -58,6 +58,7 @@ noremap ; l
 noremap l k
 noremap k j
 noremap j h
+inoremap jj <Esc>
 
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
