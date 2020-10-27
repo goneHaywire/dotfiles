@@ -1,0 +1,33 @@
+# upload file to paste.c
+pastebin()
+{
+    local url='https://paste.c-net.org/'
+    if (( $# )); then
+        local file
+        for file; do
+            curl -s \
+                --data-binary @"$file" \
+                --header "X-FileName: ${file##*/}" \
+                "$url"
+        done
+    else
+        curl -s --data-binary @- "$url"
+    fi
+}
+
+# get paste.c file
+pasteget()
+{
+    local url='https://paste.c-net.org/'
+    if (( $# )); then
+        local arg
+        for arg; do
+            curl -s "${url}${arg##*/}"
+        done
+    else
+        local arg
+        while read -r arg; do
+            curl -s "${url}${arg##*/}"
+        done
+    fi
+}
