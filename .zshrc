@@ -95,6 +95,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 # get aliases
 source ~/.aliases
+# get functions
+source ~/.funcs
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -102,3 +104,4 @@ export PATH=$PATH":$HOME/bin"
 
 # always open tmux
 tmux-init
+
