@@ -5,9 +5,7 @@ alias dotfiles="git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME/.dotfiles"
 alias notes="code ~/notes"
 
 # speed up videos in dir
-# alias speedups='mkdir output; ls -1 | grep "mp4\|mkv" | xargs -d "\n" -i nice -n 10 cpulimit -l 50 -- ffmpeg -i "{}" -filter_complex "[0:v]setpts=0.769230769*PTS[v];[0:a]atempo=1.3[a]" -map "[v]" -map "[a]" "output/{}"'
-
 alias speedups='mkdir output & for f in *(.); do nice -n 10 cpulimit -l 50 -f -- ffmpeg -i "$f" -filter_complex "[0:v]setpts=0.769230769*PTS[v];[0:a]atempo=1.3[a]" -map "[v]" -map "[a]" "output/$f"; done;'
+
 # download vid from youtube
-# alias vid-dl="youtube-dl --write-auto-sub --convert-subs 'srt' $1"
 alias vid-dl="youtube-dl -f bestvideo+mp4 --merge-output-format mkv"
