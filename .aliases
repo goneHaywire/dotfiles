@@ -7,11 +7,12 @@ alias notes="code ~/notes"
 # speed up videos in dir
 alias speedups='mkdir output & for f in *(.); do nice -n 10 cpulimit -l 50 -f -- ffmpeg -i "$f" -filter_complex "[0:v]setpts=0.769230769*PTS[v];[0:a]atempo=1.3[a]" -map "[v]" -map "[a]" "output/$f"; done;'
 
-# speed up videos in dir in pi
-alias pispeedups='mkdir output & for f in *; do cpulimit -l 30 -f -- ffmpeg -i "$f" -filter_complex "[0:v]setpts=0.769230769*PTS[v];[0:a]atempo=1.3[a]" -map "[v]" -map "[a]" "output/$f"; done;'
-
 # download vid from youtube
 alias vid-dl="youtube-dl -f bestvideo+mp4 --merge-output-format mkv"
 
 # calculate length of all videos in folder
 alias vidlen="ls -1 | xargs -d '\n' -i ffprobe -v quiet -of csv=p=0 -show_entries format=duration {} | paste -sd+ -| bc | xclip -sel clip"
+
+## RASPBERRY PI ALIASES
+# speed up videos in dir in pi
+alias pispeedups='mkdir output & for f in *; do cpulimit -l 80 -f -- ffmpeg -i "$f" -filter_complex "[0:v]setpts=0.769230769*PTS[v];[0:a]atempo=1.3[a]" -map "[v]" -map "[a]" "output/$f"; done;'
