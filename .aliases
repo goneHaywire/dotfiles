@@ -15,4 +15,4 @@ alias vidlen="ls -1 | xargs -d '\n' -i ffprobe -v quiet -of csv=p=0 -show_entrie
 
 ## RASPBERRY PI ALIASES
 # speed up videos in dir in pi
-alias pispeedups='mkdir output & for f in *; do cpulimit -l 80 -f -- ffmpeg -i "$f" -filter_complex "[0:v]setpts=0.769230769*PTS[v];[0:a]atempo=1.3[a]" -map "[v]" -map "[a]" "output/$f"; done;'
+alias pispeedups='mkdir output & for f in *; do time cpulimit -l 80 -f -- ffmpeg -hide_banner -i "$f" -filter_complex "[0:v]setpts=0.769230769*PTS[v];[0:a]atempo=1.3[a]" -map "[v]" -map "[a]" "output/$f"; done;'
