@@ -90,13 +90,16 @@ export LANG=en_US.UTF-8
 # export ARCHFLAGS="-arch x86_64"
 
 # PATHS
-source ~/.paths
+source ~/.dotfiles/.paths
+
+# CONSTANTS
+source ~/.dotfiles/.constants
 
 # ALIASES
-source ~/.aliases
+source ~/.dotfiles/.aliases
 
 # FUNCTIONS
-source ~/.funcs
+source ~/.dotfiles/.funcs
 
 # always open tmux
 tmux-init
