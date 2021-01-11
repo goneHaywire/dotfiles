@@ -11,6 +11,9 @@
 " `vim -u foo`).
 set nocompatible
 
+" set theme to codedark
+colorscheme codedark
+
 " Turn on syntax highlighting.
 syntax on
 
@@ -54,10 +57,10 @@ set smartcase
 set incsearch
 
 " Change control keys
-noremap ; l
-noremap l k
-noremap k j
-noremap j h
+" noremap ; l
+" noremap l k
+" noremap k j
+" noremap j h
 inoremap jj <Esc>
 
 " Unbind some useless/annoying default key bindings.
@@ -88,3 +91,23 @@ inoremap <Down>  <ESC>:echoe "Use ;"<CR>
 
 " Use system clipboard
 set clipboard=unnamedplus
+
+set encoding=utf-8
+filetype plugin indent on
+set spell spelllang=en_us
+
+" Zsh-like suggestion navigation
+set wildmenu
+set wildmode=full
+
+" Increase history capacity
+set history=200
+
+" Set keybinds for navigating buffers
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+
+" expand %% to %:h in command line mode
+cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:h').'/' : '%%'
