@@ -99,23 +99,23 @@ export LANG=en_US.UTF-8
 # export ARCHFLAGS="-arch x86_64"
 
 # PATHS
-if [ -f ~/.dotfiles/.paths ]; then
-	source ~/.dotfiles/.paths
+if [ -f ~/.paths ]; then
+	source ~/.paths
 fi
 
 # CONSTANTS
-if [ -f ~/.dotfiles/.constants ]; then
-	source ~/.dotfiles/.constants
+if [ -f ~/.constants ]; then
+	source ~/.constants
 fi
 
 # ALIASES
-if [ -f ~/.dotfiles/.aliases ]; then
-	source ~/.dotfiles/.aliases
+if [ -f ~/.aliases ]; then
+	source ~/.aliases
 fi
 
 # FUNCTIONS
-if [ -f ~/.dotfiles/.funcs ]; then
-	source ~/.dotfiles/.funcs
+if [ -f ~/.funcs ]; then
+	source ~/.funcs
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

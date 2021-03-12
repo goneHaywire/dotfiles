@@ -108,23 +108,23 @@ if ! shopt -oq posix; then
 fi
 
 # PATHS
-if [ -f ~/.dotfiles/.paths]; then
-    . ~/.dotfiles/.paths
+if [ -f ~/.paths]; then
+    . ~/.paths
 fi
 
 # CONSTANTS
-if [ -f ~/.dotfiles/.constants]; then
-    . ~/.dotfiles/.constants
+if [ -f ~/.constants]; then
+    . ~/.constants
 fi
 
 # ALIASES
-if [ -f ~/.dotfiles/.aliases]; then
-    . ~/.dotfiles/.aliases
+if [ -f ~/.aliases]; then
+    . ~/.aliases
 fi
 
 # FUNCS
-if [ -f ~/.dotfiles/.funcs]; then
-    . ~/.dotfiles/.funcs
+if [ -f ~/.funcs]; then
+    . ~/.funcs
 fi
 
 export PATH=$PATH":$HOME/bin"
