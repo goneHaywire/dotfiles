@@ -56,11 +56,6 @@ set smartcase
 " Enable searching as you type, rather than waiting till you press enter.
 set incsearch
 
-" Change control keys
-" noremap ; l
-" noremap l k
-" noremap k j
-" noremap j h
 inoremap jj <Esc>
 
 " Unbind some useless/annoying default key bindings.
@@ -122,3 +117,13 @@ packloadall
 let g:prettier#autoformat = 1
 
 :highlight Normal ctermfg=81 ctermbg=234
+
+" Autoindent with F7
+map <F7> gg=G<C-o><C-o>
+
+    # install only user space folders
+    #    for app in ${useronly[@]}; do
+    #	        if [[! "$(whoami)" = "root"]]; then
+    #			        stowit "${HOME}" $app
+    #				    fi
+    #			    done

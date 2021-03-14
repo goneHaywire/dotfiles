@@ -127,8 +127,8 @@ if [ -f ~/.funcs]; then
     . ~/.funcs
 fi
 
-export PATH=$PATH":$HOME/bin"
+# Fuzzy search
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # always open tmux
-tmux-init
-
+if [ "$TMUX" = "" ]; then tmux; fi
