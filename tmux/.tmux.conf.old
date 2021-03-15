@@ -3,8 +3,7 @@ unbind C-b
 set-option -g prefix C-Space
 bind-key C-Space send-prefix
 
-set -g default-terminal "tmux-256color"
-set -ga terminal-overrides ",*256col*:Tc"
+set -g default-terminal "xterm-256color"
 
 # reload config file
 bind r source-file ~/.tmux.conf \; display "Reloaded .tmux.conf!" 
@@ -79,49 +78,49 @@ set-option -g default-shell $SHELL
 ######################
 
 # loud or quiet?
-# set -g visual-activity on
-# set -g visual-bell on
-# set -g visual-silence off
-# setw -g monitor-activity off
-# set -g bell-action none
+ set -g visual-activity on
+ set -g visual-bell on
+ set -g visual-silence off
+ setw -g monitor-activity off
+ set -g bell-action none
  
  # time mode 
  setw -g clock-mode-colour colour39
  # copy mode
-# setw -g mode-style 'fg=colour39 bg=colour235 bold'
+ setw -g mode-style 'fg=colour39 bg=colour235 bold'
  
  # panes
-# set -g pane-border-style 'bg=colour233 fg=colour32'
-# set -g pane-active-border-style 'bg=colour233 fg=colour32'
+ set -g pane-border-style 'bg=colour233 fg=colour32'
+ set -g pane-active-border-style 'bg=colour233 fg=colour32'
  
  # statusbar
-# set -g status-position bottom
-# set -g status-justify left
-# set -g status-style 'bg=colour32 fg=colour250'
-# set -g status-left ''
-# set -g status-right '#[fg=colour32, bg=colour235, bold] %d/%m/%y #[fg=colour39, bg=colour233, bold]  %H:%M:%S '
-# set -g status-right-length 200
-# set -g status-left-length 100
+ set -g status-position bottom
+ set -g status-justify left
+ set -g status-style 'bg=colour32 fg=colour250'
+ set -g status-left ''
+ set -g status-right '#[fg=colour32, bg=colour235, bold] %d/%m/%y #[fg=colour39, bg=colour233, bold]  %H:%M:%S '
+ set -g status-right-length 200
+ set -g status-left-length 100
  
  # window
- set -g window-style 'bg=colour234 fg=colour102'
+ set -g window-style 'bg=colour234 fg=colour32'
  # active window
- set -g window-active-style 'bg=colour236 fg=colour250'
+ set -g window-active-style 'bg=colour233 fg=colour39'
  
  # current window number
-# setw -g window-status-current-style 'fg=colour39 bg=colour16 bold'
+ setw -g window-status-current-style 'fg=colour39 bg=colour16 bold'
  # current window name
-# setw -g window-status-current-format ' #I#[fg=colour242]:#[fg=colour178]#W#[fg=colour178]#F '
+ setw -g window-status-current-format ' #I#[fg=colour242]:#[fg=colour178]#W#[fg=colour178]#F '
  
  # other window number
-# setw -g window-status-style 'fg=colour32 bg=colour232'
+ setw -g window-status-style 'fg=colour32 bg=colour232'
  # other window name
-# setw -g window-status-format ' #I#[fg=colour242]:#[fg=colour250]#W#[fg=colour178, bold]#F '
+ setw -g window-status-format ' #I#[fg=colour242]:#[fg=colour250]#W#[fg=colour178, bold]#F '
  
-# setw -g window-status-bell-style 'fg=colour87 bg=colour0 bold'
+ setw -g window-status-bell-style 'fg=colour87 bg=colour0 bold'
  
  # messages
-# set -g message-style 'fg=colour39 bg=colour233 bold'
+ set -g message-style 'fg=colour39 bg=colour233 bold'
 
 #####################
 ###### PLUGINS ######
@@ -131,8 +130,8 @@ run-shell "~/.tmux/theme/tmux-power.tmux"
 
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-copycat'
-set -g @plugin 'wfxr/tmux-power'
-set -g @tmux_power_theme 'moon'
+# set -g @plugin 'wfxr/tmux-power'
+# set -g @tmux_power_theme 'moon'
 
 # run tmux plugin manager
 run -b '~/.tmux/plugins/tpm/tpm'

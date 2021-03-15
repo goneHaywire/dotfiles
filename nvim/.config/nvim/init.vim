@@ -96,11 +96,19 @@ nnoremap <silent> ]B :blast<CR>
 " expand %% to %:h in command line mode
 cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
+" Folding
+set foldmethod=syntax
+set foldcolumn=1
+let javaScript_fold=1
+set foldlevelstart=99
+
 "##### Plugin Section
 call plug#begin("~/.vim/plugged")
 
 " Theme
-Plug 'dracula/vim'
+" Plug 'dracula/vim'
+" Plug 'hzchirs/vim-material'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' } 
 
 " Emmet
 Plug 'mattn/emmet-vim'
@@ -141,7 +149,10 @@ endif
 syntax enable
 
 " Theme ----------------------------------
-colorscheme dracula
+" set background=dark
+" colorscheme dracula
+colorscheme material
+let g:material_theme_style = 'ocean'
 
 " NERDTree ----------------------------------
 let g:NERDTreeShowHidden = 1
