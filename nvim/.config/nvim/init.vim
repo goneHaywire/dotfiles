@@ -9,6 +9,10 @@ set shortmess+=I
 " Show line numbers.
 set number
 
+if (has("termguicolors"))
+	set termguicolors
+endif
+
 " This enables relative line numbering mode. With both number and
 " relativenumber enabled, the current line shows the true line number, while
 " all other lines (above and below) are numbered relative to the current line.
@@ -102,28 +106,51 @@ set foldcolumn=1
 let javaScript_fold=1
 set foldlevelstart=99
 
-"##### Plugin Section
+" --------------------------------------------------------------------------------
+"############################## Plugin Section ###################################
+" --------------------------------------------------------------------------------
 call plug#begin("~/.vim/plugged")
 
+" --------------------------------------------------------------------------------
 " Theme
-" Plug 'dracula/vim'
-" Plug 'hzchirs/vim-material'
+" --------------------------------------------------------------------------------
 Plug 'kaicataldo/material.vim', { 'branch': 'main' } 
 
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'palenight'
+
+" --------------------------------------------------------------------------------
 " Emmet
+" --------------------------------------------------------------------------------
 Plug 'mattn/emmet-vim'
 
+" --------------------------------------------------------------------------------
 " Tag autorename
+" --------------------------------------------------------------------------------
 Plug 'AndrewRadev/tagalong.vim'
 
+" --------------------------------------------------------------------------------
 " Commentary
+" --------------------------------------------------------------------------------
 Plug 'tpope/vim-commentary'
 
+" --------------------------------------------------------------------------------
 " Code Completion
+" --------------------------------------------------------------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+Plug 'alvan/vim-closetag'
 
+" --------------------------------------------------------------------------------
+" Prettier
+" --------------------------------------------------------------------------------
+Plug 'prettier/vim-prettier'
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+
+" --------------------------------------------------------------------------------
 " Syntax highlighting
+" --------------------------------------------------------------------------------
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'jonsmithers/vim-html-template-literals'
@@ -132,29 +159,12 @@ Plug 'mxw/vim-jsx'
 
 Plug 'Yggdroot/indentLine'
 
+" --------------------------------------------------------------------------------
 " NERDTree
+" --------------------------------------------------------------------------------
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 
-" Fuzzy Finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() --all } }
-Plug 'junegunn/fzf.vim'
-
-call plug#end()
-
-" Plugin Config Section
-if (has("termguicolors"))
-	set termguicolors
-endif
-syntax enable
-
-" Theme ----------------------------------
-" set background=dark
-" colorscheme dracula
-colorscheme material
-let g:material_theme_style = 'ocean'
-
-" NERDTree ----------------------------------
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
@@ -166,7 +176,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Toggle
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
-" Fuzzy Finder ---------------------------------
+" --------------------------------------------------------------------------------
+" Fuzzy Finder
+" --------------------------------------------------------------------------------
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() --all } }
+Plug 'junegunn/fzf.vim'
+
 nnoremap <C-p> :FZF<CR>
 let g:fzf_action = {
 	\ 'ctrl-t': 'tab split',
@@ -174,3 +189,29 @@ let g:fzf_action = {
 	\ 'ctrl-v': 'vsplit'
 	\}
 " let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+" --------------------------------------------------------------------------------
+" Ale
+" --------------------------------------------------------------------------------
+Plug 'dense-analysis/ale'
+
+let g:ale_fixers = {
+\	'html': ['prettier'],
+\	'css': ['stylelint'],
+\	}
+let g:ale_linters = {
+\	'html': ['htmlhint'],
+\	'css': ['stylelint'],
+\	'javascript': ['eslint'],
+\	}
+" let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+
+call plug#end()
+
+" --------------------------------------------------------------------------------
+"############################# Plugin Config Section #############################
+" --------------------------------------------------------------------------------
+" Theme
+" --------------------------------------------------------------------------------
+colorscheme material
