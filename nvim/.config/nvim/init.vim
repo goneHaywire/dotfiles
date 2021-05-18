@@ -16,6 +16,9 @@ if (has("termguicolors"))
 	set termguicolors
 endif
 
+" Set leader to <Space>
+let mapleader = " "
+
 " This enables relative line numbering mode. With both number and
 " relativenumber enabled, the current line shows the true line number, while
 " all other lines (above and below) are numbered relative to the current line.
@@ -175,18 +178,18 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
 " --------------------------------------------------------------------------------
-" Fuzzy Finder
+" Telescope Fuzzy Finder
 " --------------------------------------------------------------------------------
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() --all } }
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
-nnoremap <C-p> :FZF<CR>
-let g:fzf_action = {
-	\ 'ctrl-t': 'tab split',
-	\ 'ctrl-s': 'split',
-	\ 'ctrl-v': 'vsplit'
-	\}
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+nnoremap <C-p> :Telescope find_files<CR>
+nnoremap <Leader>fg :Telescope live_grep<CR>
+nnoremap <Leader>fb :Telescope buffers<CR>
+nnoremap <Leader>fh :Telescope help_tags<CR>
+nnoremap <Leader>fl :Telescope git_files<CR>
+"let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " --------------------------------------------------------------------------------
 " Ale
