@@ -221,6 +221,14 @@ let g:airline_powerline_fonts = 1
 " --------------------------------------------------------------------------------
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+" --------------------------------------------------------------------------------
+" Vim Fugitive
+" --------------------------------------------------------------------------------
+Plug 'tpope/vim-fugitive'
+
+nmap <leader>gf :diffget //2<CR>
+nmap <leader>gj :diffget //3<CR>
+nmap <leader>gs :G<CR>
 
 call plug#end()
 
