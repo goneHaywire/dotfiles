@@ -1,1 +1,1 @@
-vf() { fzf | xargs -r -I % nvim %; }
+vf() { fzf | xargs -r -I % $EDITOR %; }
