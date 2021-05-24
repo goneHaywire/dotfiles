@@ -116,8 +116,8 @@ if [ -f ~/.aliases ]; then
 fi
 
 # FUNCTIONS
-if [ -f ~/.funcs ]; then
-	source ~/.funcs
+if [ -f ~/functions/functions.sh ]; then
+	source ~/functions/functions.sh
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
