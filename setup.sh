@@ -12,7 +12,7 @@ base=(
 	zsh
 	git
 	nvim
-	functions
+	shell
 )
 
 # folders that should, or only need to be installed for a local user

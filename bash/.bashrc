@@ -108,23 +108,23 @@ if ! shopt -oq posix; then
 fi
 
 # PATHS
-if [ -f ~/.paths]; then
-    . ~/.paths
+if [ -f ~/.shell/.paths ]; then
+    . ~/.shell/.paths
 fi
 
 # CONSTANTS
-if [ -f ~/.constants]; then
-    . ~/.constants
+if [ -f ~/.shell/.constants ]; then
+    . ~/.shell/.constants
 fi
 
 # ALIASES
-if [ -f ~/.aliases]; then
-    . ~/.aliases
+if [ -f ~/.shell/.aliases ]; then
+    . ~/.shell/.aliases
 fi
 
 # FUNCS
-if [ -f ~/.funcs]; then
-    . ~/.funcs
+if [ -f ~/.shell/functions/functions.sh ]; then
+    . ~/.shell/functions/functions.sh
 fi
 
 # Fuzzy search

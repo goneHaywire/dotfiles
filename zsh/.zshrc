@@ -101,23 +101,23 @@ export LANG=en_US.UTF-8
 # export ARCHFLAGS="-arch x86_64"
 
 # PATHS
-if [ -f ~/.paths ]; then
-	source ~/.paths
+if [ -f ~/.shell/.paths ]; then
+	source ~/.shell/.paths
 fi
 
 # CONSTANTS
-if [ -f ~/.constants ]; then
-	source ~/.constants
+if [ -f ~/.shell/.constants ]; then
+	source ~/.shell/.constants
 fi
 
 # ALIASES
-if [ -f ~/.aliases ]; then
-	source ~/.aliases
+if [ -f ~/.shell/.aliases ]; then
+	source ~/.shell/.aliases
 fi
 
 # FUNCTIONS
-if [ -f ~/functions/functions.sh ]; then
-	source ~/functions/functions.sh
+if [ -f ~/.shell/functions/functions.sh ]; then
+	source ~/.shell/functions/functions.sh
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
