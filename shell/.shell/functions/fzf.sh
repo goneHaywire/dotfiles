@@ -1,5 +1,6 @@
 # view/vim file
 vf() { fzf --preview='head -$LINES {}' | xargs -r -I % $EDITOR %; }
+vfg() { cd ~ && fzf --preview='head -$LINES {}' | xargs -r -I % $EDITOR %; }
 
 # teleport
 tp() { cd "$(ls -R ~| grep "./" | sed "s|.$||" | fzf )" && tree ; }
