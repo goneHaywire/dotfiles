@@ -143,12 +143,9 @@ Plug 'tpope/vim-commentary'
 Plug 'alvan/vim-closetag'
 
 " --------------------------------------------------------------------------------
-" Prettier
+" Formatter
 " --------------------------------------------------------------------------------
-Plug 'prettier/vim-prettier'
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
-
+Plug 'mhartington/formatter.nvim'
 " --------------------------------------------------------------------------------
 " Syntax highlighting
 " --------------------------------------------------------------------------------
@@ -235,10 +232,11 @@ call plug#end()
 " --------------------------------------------------------------------------------
 "############################# Plugin Config Section #############################
 " --------------------------------------------------------------------------------
-" LSP
+" LSP || Formatting
 " --------------------------------------------------------------------------------
 inoremap <expr> <Tab>	pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+nnoremap <silent> <leader>f :Format<CR>
 
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
@@ -273,11 +271,11 @@ set omnifunc=v:lua.vim.lsp.omnifunc
      buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
  
      -- Set some keybinds conditional on server capabilities
-     if client.resolved_capabilities.document_formatting then
-         buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-     elseif client.resolved_capabilities.document_range_formatting then
-         buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-     end
+     -- if client.resolved_capabilities.document_formatting then
+         -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+     -- elseif client.resolved_capabilities.document_range_formatting then
+         -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+     -- end
  
      -- Set autocommands conditional on server_capabilities
      if client.resolved_capabilities.document_highlight then
@@ -300,6 +298,78 @@ set omnifunc=v:lua.vim.lsp.omnifunc
        on_attach = on_attach,
      }
    end
+
+require("formatter").setup(
+  {
+    logging = true,
+    filetype = {
+      typescriptreact = {
+        -- prettier
+        function()
+          return {
+            exe = "prettier",
+            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+            stdin = true
+          }
+        end
+      },
+      typescript = {
+        -- prettier
+        function()
+          return {
+            exe = "prettier",
+            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+            stdin = true
+          }
+        end
+        -- linter
+        -- function()
+        --   return {
+        --     exe = "eslint",
+        --     args = {
+        --       "--stdin-filename",
+        --       vim.api.nvim_buf_get_name(0),
+        --       "--fix",
+        --       "--cache"
+        --     },
+        --     stdin = false
+        --   }
+        -- end
+      },
+      javascript = {
+        -- prettier
+        function()
+          return {
+            exe = "prettier",
+            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+            stdin = true
+          }
+        end
+      },
+      javascriptreact = {
+        -- prettier
+        function()
+          return {
+            exe = "prettier",
+            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+            stdin = true
+          }
+        end
+      },
+      json = {
+        -- prettier
+        function()
+          return {
+            exe = "prettier",
+            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+            stdin = true
+          }
+        end
+
+      },
+    }
+  }
+)
 EOF
 " --------------------------------------------------------------------------------
 " Theme
